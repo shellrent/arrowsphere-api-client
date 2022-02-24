@@ -165,22 +165,22 @@ class Customer extends AbstractEntity
         parent::__construct($data);
 
         $this->addressLine1 = $data[self::COLUMN_ADDRESS_LINE_1];
-        $this->addressLine2 = $data[self::COLUMN_ADDRESS_LINE_2];
-        $this->billingId = $data[self::COLUMN_BILLING_ID];
+        $this->addressLine2 = $data[self::COLUMN_ADDRESS_LINE_2] ?? null;
+        $this->billingId = $data[self::COLUMN_BILLING_ID] ?? null;
         $this->city = $data[self::COLUMN_CITY];
         $this->companyName = $data[self::COLUMN_COMPANY_NAME];
         $this->contact = new Contact($data[self::COLUMN_CONTACT]);
         $this->countryCode = $data[self::COLUMN_COUNTRY_CODE];
         $this->details = new CompanyDetails($data[self::COLUMN_DETAILS]);
         $this->deletedAt = $data[self::COLUMN_DELETED_AT] ?? null;
-        $this->emailContact = $data[self::COLUMN_EMAIL_CONTACT];
-        $this->headcount = $data[self::COLUMN_HEADCOUNT];
-        $this->internalReference = $data[self::COLUMN_INTERNAL_REFERENCE];
-        $this->receptionPhone = $data[self::COLUMN_RECEPTION_PHONE];
-        $this->ref = $data[self::COLUMN_REF];
+        $this->emailContact = $data[self::COLUMN_EMAIL_CONTACT] ?? null;
+        $this->headcount = $data[self::COLUMN_HEADCOUNT] ?? null;
+        $this->internalReference = $data[self::COLUMN_INTERNAL_REFERENCE] ?? null;
+        $this->receptionPhone = $data[self::COLUMN_RECEPTION_PHONE] ?? null;
+        $this->ref = $data[self::COLUMN_REF] ?? null;
         $this->reference = $data[self::COLUMN_REFERENCE] ?? null;
-        $this->state = $data[self::COLUMN_STATE];
-        $this->taxNumber = $data[self::COLUMN_TAX_NUMBER];
+        $this->state = $data[self::COLUMN_STATE] ?? null;
+        $this->taxNumber = $data[self::COLUMN_TAX_NUMBER] ?? null;
         $this->websiteUrl = $data[self::COLUMN_WEBSITE_URL] ?? null;
         $this->zip = $data[self::COLUMN_ZIP];
     }
