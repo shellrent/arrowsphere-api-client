@@ -7,6 +7,7 @@ use ArrowSphere\PublicApiClient\Exception\NotFoundException;
 use ArrowSphere\PublicApiClient\Exception\PublicApiClientException;
 use ArrowSphere\PublicApiClient\Licenses\Entities\FindResult;
 use ArrowSphere\PublicApiClient\Licenses\Entities\License\Config;
+use ArrowSphere\PublicApiClient\Licenses\Entities\License\License;
 use Generator;
 use GuzzleHttp\Exception\GuzzleException;
 
@@ -263,4 +264,42 @@ class LicensesClient extends AbstractLicensesClient
 
         return new Config($response['data']);
     }
+	
+	
+	public function getLicenseDetails( string $licenseReference ): License {
+		$this->path = '/' . $licenseReference;
+		
+		$rawResponse = $this->get();
+		$response = $this->decodeResponse( $rawResponse );
+		
+		return new License( $response['data']['license'] );
+    }
+	
+	
+	public function updateSeatsNumber( string $licenseReference, int $seats ) {
+		$this->path = '/' . $licenseReference . '/seats';
+		
+		$this->put( [
+			'seats' => $seats
+		]);
+    }
+	
+	public function cancelLicense( string $licenseReference ) {
+		$this->path = '/' . $licenseReference . '/cancel';
+		
+		$this->put();
+    }
+    
+	public function suspendLicense( string $licenseReference ) {
+		$this->path = '/' . $licenseReference . '/suspend';
+		
+		$this->put();
+    }
+    
+	public function reactivateLicense( string $licenseReference ) {
+		$this->path = '/' . $licenseReference . '/reactivate';
+		
+		$this->put();
+    }
+    
 }
