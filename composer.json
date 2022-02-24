@@ -1,5 +1,5 @@
 {
-  "name": "arrowsphere/public-api-client",
+  "name": "shellrent/arrowsphere-api-client",
   "type": "library",
   "description": "The official PHP client for ArrowSphere's public API",
   "keywords": [
