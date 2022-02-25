@@ -296,6 +296,33 @@ abstract class AbstractClient
 
         return $this->getResponse($response);
     }
+    
+    /**
+     * Sends a PATCH request and returns the response
+     *
+     * @param string $payload
+     * @param array $parameters
+     * @param array $headers
+     *
+     * @return StreamInterface
+     *
+     * @throws GuzzleException
+     * @throws NotFoundException
+     * @throws PublicApiClientException
+     */
+    protected function patch(string $payload = '', array $parameters = [], array $headers = []): StreamInterface
+    {
+        $response = $this->client->request(
+            'patch',
+            $this->generateUrl($parameters),
+            [
+                'headers' => $this->prepareHeaders($headers),
+                'body'    => $payload,
+            ]
+        );
+
+        return $this->getResponse($response);
+    }
 
     /**
      * Generates the full url for request
